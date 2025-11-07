@@ -4,10 +4,9 @@ source("api/global.R")
 # section: ----------------------------------
 main_file <- "api/routes/main_routes.R"
 
-plumb(main_file) |>
-  pr_set_debug(TRUE) |>
-  pr_hook(
-    "exit",
+api(main_file) |>
+  api_on(
+    "end",
     function() {
       message("Plumber app shutting down. Stopping mirai daemons...")
       # This function terminates all currently running daemons
@@ -15,4 +14,4 @@ plumb(main_file) |>
       message("mirai daemons stopped.")
     }
   ) |>
-  pr_run()
+  api_run()

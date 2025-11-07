@@ -2,15 +2,20 @@
 
 #* Echo back the input
 #* @get /
+function() {
 return_msg
-
+}
 
 #* Echo back the input
 #* @serializer csv
 #* @get /echo1
-return_csv
+function() {
+  return_csv
+}
 
 #* Echo back the input
 #* @serializer csv
 #* @get /echo2
-return_aync_csv
+function() {
+  return_aync_csv
+}
